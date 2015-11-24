@@ -8,14 +8,14 @@
     .jumbotron .btn-primary:hover {
       background: #17ECC1; }
   .jumbotron p {
-    color: #d9ccee;
+    color: #17ECC1;
     max-width: 75%;
     margin: 1em auto 2em; }
   .navbar + .jumbotron {
     margin-top: -20px; }
   .jumbotron .lang-logo {
     display: block;
-    background: #B01302;
+    background: #17ECC1;
     border-radius: 50%;
     overflow: hidden;
     width: 100px;

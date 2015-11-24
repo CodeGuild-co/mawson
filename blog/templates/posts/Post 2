@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html>
-<p>
-Oooh a blog to write on, I have never written a blog, but the word sounds exciting. Blog sounds bit like frog and frogs are cool. Villiers Park seems to have good intentions so I should be safe here to write a blog. The food here look nice on the photos so they should be as good as they say in real life. I have never written in Python but have seen the program on my raspberry pi and it doesn’t seem too scary. The group I am working with seem a nice enough bunch who should be willing to help in this snake filled Python world. 
-</p>
+  <head>
+    <title>The blog that I call my own</title>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}" />
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top navbar-inverse">
+    <div class="container">
+     <ul class="nav navbar-nav">
+      <li class="active">
+        <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Blog Posts <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+          <li><a href="{{ url_for('posts', name='hello_world') }}">Hello World</a></li>
+          <li><a href="{{ url_for('posts', name='Post 2') }}">Post 2</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1>The blog that I call my own</h1>
+    <p>This is the blog of Matthew Mawson, born December 24th 1998. I am currently on a Villiers Park course</p>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+    <h3>I've written one blog post!</h3>
+    <ul>
+      <li><a href="{{ url_for('posts', name='hello_world') }}">Hello World</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+</body>
 </html>

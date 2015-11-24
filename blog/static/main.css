@@ -1,9 +1,9 @@
 .jumbotron {
-  background: #532F8C;
+  background: #17ECC1;
   color: white;
   padding-bottom: 80px; }
   .jumbotron .btn-primary {
-    background: #17ECC1;
+    background:  #532F8C;
     border-color: #17ECC1; }
     .jumbotron .btn-primary:hover {
       background: #17ECC1; }

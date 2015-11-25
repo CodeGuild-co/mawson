@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Post 1</title>
+        <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}" />
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-static-top navbar-inverse">
+          <div class="container">
+            <ul class="nav navbar-nav">
+              <li class="active">
+                <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Blog Posts <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="{{ url_for('posts', name='hello_world') }}">Hello World</a></li>
+                  </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+    <body>
+        <div class="container">
+            <div class="row">
+
+{% filter markdown %}
+# Billy's Guest Post
+
+Thanks Matthew for letting me write this guest post!
+
+I'm going to try to talk through the steps that are needed to get the CodeGuild base-python projects up and running inside a virtual machine.
+
+Ready? Let's Go!
+
+First, open a Terminal by clicking the swiryl icon in the top left of the Ubuntu screen. The swirly icon is called "dash" and gives you a search bar that you can use to find software and things online. If you type in "term" you'll see a list of applications, the first of which is "Terminal" click that to open a dark window with something like this:
+
+	ubuntu@ubuntu-VirtualBox:~$
+
+This is the Terminal's command prompt and the commands you type in here will be executed by the Terminal. Let's try that:
+
+	$ sudo apt-get update
+	$ sudo apt-get install vim git python3-pip
+
+OK, what's this doing? The `sudo` part means "super user do" it tells the Terminal to run the next command as an admin user (with super powers!). `apt-get` is a software package manager; it downloads, installs, and uninstalls software for you. Think of it like Apple's App Store (or Google Play etc. etc.) but much much better! `apt-get update` tells `apt-get` to download an up-to-date list of the software that's available to install. `apt-get install` then tells `apt-get` to fetch programs and install them. In this case we're installing `vim`, a text editor, `git` for managing our code and talking to GitHub, and `python3-pip` which is Python's own package manager (like `apt-get` but just for Python stuff).
+
+When that's done we'll grab the code from GitHub:
+
+	$ cd Desktop
+	$ git clone https://github.com/CodeGuild-co/DOMAIN.git
+	$ cd DOMAIN
+
+`cd` tells the Terminal to "change directory" to the Desktop. The `git clone` command is then asking `git` to fetch the repository from GitHub. You'll have to change the `DOMAIN` parts to suit your domain (e.g. for this blog it's `mawson`). The final `cd` moves the Terminal inside the newly downloaded repo. Let's install some stuff:
+
+	$ pip3 install -r requirements.txt
+
+Now let's run the blog locally:
+
+	$ python3 blog/blog.py
+
+This will start a server that hosts your blog locally. You can visit it if you open up a browser and browse to [localhost:5000](https://localhost:5000).
+
+That was so easy! (Much easier than for the other teams!)
+
+Now you can make a change to your blog, refresh the page and see the changes happen!
+
+When you're happy with all of the changes you'll need to tel `git` to package them up and send them to GitHub:
+
+	$ git add .
+	$ git commit -m 'WHAT HAVE YOU CHANGED?'
+	$ git push
+
+`git add` tells `git` that you want to add of the changes to a bundle of changes called a commit. Next you bundle the commit and describe what changes have happened in it. You'll have to write up a proper description of what you've done. Finally, `git push` sends your new commit up to GitHub. Then Heroku will grab it and re-host your blog with your new changes!
+
+Easy!
+{% endfilter %}
+          </div>
+        </div>
+    </body>
+</html>

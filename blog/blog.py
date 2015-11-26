@@ -18,11 +18,11 @@ def write():
 
 @app.route('/write', methods=['POST'])
 def writepost():
-
-    texts = request.form['text']
-    with open('blog/templates/posts/output.txt', 'w') as f:
-        f.write('hello' + request.form['text'])
-    return render_template('home.html')
+    with open('blog/templates/posts/templatetop.html', 'r') as g:
+        with open('blog/templates/posts/templatebottom.html', 'r') as e:
+            with open('blog/templates/posts/%s.html', 'w' % request.form['title'] ) as f:
+                f.write(g.read() + request.form['text'] + e.read())
+            return render_template('%s.html' % request.form['title'])
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

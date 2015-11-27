@@ -5,6 +5,7 @@
   padding-bottom: 80px; }
   .jumbotron .btn-primary {
     background:  #532F8C;
+    background-image: url(https://cloud.githubusercontent.com/assets/15985102/11439266/369a915c-94f2-11e5-9e66-cc2a6e2043d3.png);
     border-color: #17ECC1; }
     .jumbotron .btn-primary:hover {
       background: #17ECC1; }

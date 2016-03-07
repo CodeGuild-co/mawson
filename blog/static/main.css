@@ -26,7 +26,7 @@
     border: 2px solid white; }
     .jumbotron .lang-logo img {
       max-width: 100%; }
-    li.list:before {
+    li.list {
             content: "\e080";
             font-family: 'Glyphicons Halflings';
             font-size: 9px;

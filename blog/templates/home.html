@@ -15,12 +15,10 @@
                 <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
               </li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Blog Posts <span class="caret"></span></a>
-                <ul class="dropdown-menu" role = menu>
-                    <li><a href="{{ url_for('posts', name='hello_world') }}">Hello World</a></li>
-                    <li><a href="#">Post 1</a></li>
-                    <li><a href="#">Post 2</a></li>
-                </ul>  
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-folder-open"></span> Menu<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="{{ url_for('posts', name='hello_world') }}">Clock</a></li>
+                  </ul>
               </li>
             </ul>
           </div>

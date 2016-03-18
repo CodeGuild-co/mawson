@@ -66,18 +66,18 @@
     <div class = "row">
       <h1>Higher or Lower</h1>
       <h2> Game of the Year Edition</h2>
-      <table border = 1> 
+      <table border = 1 cellspacing="0" cellpadding="0"> 
         <tr>
         <td><button id = "LBTN" onclick = "playGame('0')">Choose Lower</button></td>
         <td><button id = "HBTN" onclick = "playGame('1')">Choose Higher</button></td>
-        <td><p align = center width = 120 id = "Score">Score: 0 </p></td>
-        <td><p align = center width = 120 id = "Lives">Lives: 3</p></td>
+        <td><p align = center width = 120 height = 60 id = "Score">Score: 0 </p></td>
+        <td><p align = center width = 120 height = 60 id = "Lives">Lives: 3</p></td>
         <td rowspan = "2" align = center><button  onclick = "reset()" class = "reset" >Reset</button></td>
         </tr>
         <tr>        
-        <td align = center width = 80 ><p class = "small" id = "OldCard"></p></td>
-        <td align = center width = 80><p id = "Card"></p></td>
-        <td colspan = "2" width = 200 align = center ><p id = "Result"></p></td>
+        <td align = center width = 80 height = 60><p class = "small" id = "OldCard"></p></td>
+        <td align = center width = 80 height = 60><p id = "Card"></p></td>
+        <td colspan = "2" width = 200 height = 60 align = center ><p id = "Result"></p></td>
         </tr>
       </table>
     </div>

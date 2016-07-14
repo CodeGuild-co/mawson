@@ -1,7 +1,7 @@
 .jumbotron {
   #background: #532F8C/*#395A53*/;
   background-image: url(https://cloud.githubusercontent.com/assets/15985102/16837828/9d0801f6-49bd-11e6-8d36-d9744e4f8025.png)repeat top center;
-  filter: brightness(50%)
+  -webkit-filter: brightness(150%);
   color: white;
   padding-bottom: 80px; }
   .jumbotron .btn-primary {

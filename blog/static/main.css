@@ -9,7 +9,7 @@
     .jumbotron .btn-primary:hover {
       background: #17ECC1; }
   .jumbotron p {
-    color: #17ECC1;
+    color: white;
     max-width: 75%;
     margin: 1em auto 2em; }
   .navbar + .jumbotron {
@@ -38,8 +38,8 @@
       margin-left: -17px;
       color: #CCCCCC;
     }
-  .jumbotron .title{
-    margin: 30px;
-    background: rgba(135,206,255,0.7);
+  mark{
+    background: rgba(173, 217, 230, 0.5);
+    font-color: black;
   }
 

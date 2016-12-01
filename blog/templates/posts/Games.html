@@ -91,22 +91,22 @@
 <table border="0" cellspacing="0" cellpadding="0" >
 <tbody>
 <tr>
-<td align="center" width = 120 height = 60>November</td>
+<td align="center" width = 300 height = 60>November</td>
 </tr>
 <tr>
-<td><button id = "Nov1" onclick= "jokes(Nov1A)">Joke 1</button></td>
+<td><button id = "Nov1" onclick= "jokes('Nov1A')">Joke 1</button></td>
 </tr>
 <tr>
 <td><div id = "Nov1A" >Test</div></td>
 </tr>
 <tr>
-<td><button id = "Nov2" onclick= "jokes(Nov2A)">Joke 2</button></td>
+<td><button id = "Nov2" onclick= "jokes('Nov2A')">Joke 2</button></td>
 </tr>
 <tr>
 <td><div id = "Nov2A" >Test</div></td>
 </tr>
 <tr>
-<td><button id = "Nov3" onclick= "jokes(Nov3A)">Joke 3</button></td>
+<td><button id = "Nov3" onclick= "jokes('Nov3A')">Joke 3</button></td>
 </tr>
 <tr>
 <td><div id = "Nov3A" >Test</div></td>
@@ -191,7 +191,7 @@
 function jokes(name)
 {
 
-var div = document.getElementById('Nov1A');
+var div = document.getElementById(name);
     if (div.style.display !== 'none') {
       	 div.style.display = 'none';
     }

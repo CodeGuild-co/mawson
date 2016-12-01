@@ -80,6 +80,35 @@
         <td colspan = "2" width = 200 height = 60 align = center ><p id = "Result"></p></td>
         </tr>
       </table>
+	    
+	<br />
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td bgcolor="lightgreen">
+<table border="0" cellspacing="0" cellpadding="0" >
+<tbody>
+<tr>
+<td align="center">November</td>
+</tr>
+<tr>
+<td><button id = "Nov1" onclick= "jokes(Nov1)">Joke 1</button></td>
+</tr>
+<tr>
+<td><div id = "Nov1A" >Test</div></td>
+</tr>
+<tr>
+<td><button id = "Nov2" onclick= "Jokes(Nov2)">Joke 2</button></td>
+</tr>
+<tr>
+<td><button id = "Nov3" onclick= "Jokes(Nov3)">Joke 3</button></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tbody>
+</table>
+	    
     </div>
   </div>
   <script>
@@ -150,6 +179,19 @@
     TCard.innerHTML = currentCard[Card];
     TOldCard.innerHTML = currentCard[OldCard];
   }  
+	  
+function jokes(name)
+{
+
+var div = document.getElementById("Nov1A");
+    if (div.style.display !== 'none') {
+      	 div.style.display = 'none';
+    }
+    else {
+        div.style.display = 'block';
+    }
+}	  
+	  
   </script>
 </body>
 </html>

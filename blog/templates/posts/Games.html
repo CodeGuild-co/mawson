@@ -81,7 +81,9 @@
         </tr>
       </table>
 	    
-	<br />
+	<br>
+<h2>Asher's Komedy Korner</h2>
+	<br>
 <table border="0" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
@@ -89,7 +91,7 @@
 <table border="0" cellspacing="0" cellpadding="0" >
 <tbody>
 <tr>
-<td align="center">November</td>
+<td align="center" width = 120 height = 60>November</td>
 </tr>
 <tr>
 <td><button id = "Nov1" onclick= "jokes(Nov1)">Joke 1</button></td>
@@ -101,7 +103,13 @@
 <td><button id = "Nov2" onclick= "Jokes(Nov2)">Joke 2</button></td>
 </tr>
 <tr>
+<td><div id = "Nov2A" >Test</div></td>
+</tr>
+<tr>
 <td><button id = "Nov3" onclick= "Jokes(Nov3)">Joke 3</button></td>
+</tr>
+<tr>
+<td><div id = "Nov3A" >Test</div></td>
 </tr>
 </tbody>
 </table>
@@ -183,7 +191,7 @@
 function jokes(name)
 {
 
-var div = document.getElementById("Nov1A");
+var div = document.getElementById(name + "A");
     if (div.style.display !== 'none') {
       	 div.style.display = 'none';
     }

@@ -42,7 +42,7 @@
     background: rgba(173, 217, 230, 0.6);
     color:black;
   }
-    canvas{
+  canvas{
       pointer-events:none;
 }
 

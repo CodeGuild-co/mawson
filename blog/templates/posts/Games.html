@@ -194,16 +194,17 @@ var div = document.getElementById(name);
 }
     
 function CheckText()
-{
-    var reader = new FileReader();
-
-    // Closure to capture the file information.
-    reader.onload = (function("/static/text.txt") {
-    var box = document.getElementById("Text1");
-    box.innerHTML=reader.result;
-    };
+{                               
+    var str = "";
+	var txtFile = new File("/static/text.txt");
+	txtFile.open("r");
+	while (!txtFile.eof) {
+		// read each line of text
+		str += txtFile.readln() + "\n";
+	}
+	box.innerHTML = str;
 }
 	  
-  </script>
+</script>
 </body>
 </html>

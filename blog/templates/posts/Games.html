@@ -114,7 +114,7 @@
 </tbody>
 </table> 
 <br>
-<textarea onload = "CheckText()" name="Text1" cols="40" rows="5"></textarea>
+<textarea onload = "CheckText()" id="Text1" cols="40" rows="5"></textarea>
     </div>
   </div>
   <script>
@@ -195,14 +195,11 @@ var div = document.getElementById(name);
     
 function CheckText()
 {                               
-    var str = "";
-	var txtFile = new File("/static/text.txt");
-	txtFile.open("r");
-	while (!txtFile.eof) {
-		// read each line of text
-		str += txtFile.readln() + "\n";
-	}
-	box.innerHTML = str;
+    var reader = new FileReader();
+	reader.onload = function (e) {  
+		var output=e.target.result;
+		document.getElementById('Text1').innerHTML= output;
+	};//end onload()
 }
 	  
 </script>

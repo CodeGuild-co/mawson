@@ -112,7 +112,9 @@
 </table>
 </td>
 </tbody>
-</table>    
+</table> 
+<br>
+<textarea onload = "CheckText()" name="Text1" cols="40" rows="5"></textarea>
     </div>
   </div>
   <script>
@@ -124,13 +126,10 @@
   var Result = document.getElementById("Result");
   var lives;
   var score;
-
   reset(); 
-
   function getCard() {
    return Math.floor(Math.random() * 13);
   }
-
   function playGame(choice){
     OldCard = Card;
     Card = getCard();
@@ -165,7 +164,6 @@
       document.getElementById("HBTN").disabled = true;
     }
   }
-
   function reset() 
   {
     lives = 3;
@@ -186,7 +184,6 @@
 	  
 function jokes(name)
 {
-
 var div = document.getElementById(name);
     if (div.style.display !== 'none') {
       	 div.style.display = 'none';
@@ -194,7 +191,18 @@ var div = document.getElementById(name);
     else {
         div.style.display = 'block';
     }
-}	  
+}
+    
+function CheckText()
+{
+    var reader = new FileReader();
+
+    // Closure to capture the file information.
+    reader.onload = (function("/static/text.txt") {
+    var box = document.getElementById("Text1");
+    box.innerHTML=reader.result;
+    };
+}
 	  
   </script>
 </body>

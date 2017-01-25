@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="/static/effects.js"></script>
+<script src="/static/games.js"></script>
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}" />
 <style>
@@ -114,7 +115,7 @@
 </tbody>
 </table> 
 <br>
-<textarea onload = "CheckText()" id="Text1" cols="40" rows="5"></textarea>
+<canvas id="canvas" height=400 width=400></canvas>
 <br>
 <input type="button" id="decode" onclick="CheckText()" value="Refresh">	    
     </div>

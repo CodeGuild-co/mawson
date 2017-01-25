@@ -14,7 +14,7 @@ for(var i = 0; i<enemynum; i++)
 }
 
 
-var FPS = 30;
+var FPS = 60;
 canvas.addEventListener('mousemove', MouseMove, false);
 setInterval(function() {
   update();
@@ -70,15 +70,12 @@ function update(){
  
 }
 
-var holes = [];
-
-
-
-
 
 function MouseMove(e){
 
-player.x = e.clientX+10;
-player.y = e.clientY+10; 
+player.x = e.clientX-canvas.offsetLeft-player.height/2;
+document.getElementById("testout").innerHTML=String(player.x)+",";
+player.y = e.clientY-canvas.offsetTop-player.height/2; 
+document.getElementById("testout").innerHTML+=String(player.y);
 
 }

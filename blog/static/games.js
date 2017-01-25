@@ -1,7 +1,42 @@
-var c=document.getElementById("canvas");
-var ctx=c.getContext("2d");
-var enemynum = 0;
-var enemycounter=100;
+var c;
+var ctx;
+var enemynum;
+var enemycounter;
+
+var FPS;
+var player
+var enemies = []; 
+
+
+
+function Initialise()
+{
+  c=document.getElementById("canvas");
+  ctx=c.getContext("2d");
+  enemynum = 0;
+  enemycounter=100;
+  FPS = 60;
+  canvas.addEventListener('mousemove', MouseMove, false);
+  setInterval(function() {
+  update();
+  draw();
+}, 1000/FPS);  
+  
+  player = {
+  color: "#00A",
+  x: 220,
+  y: 270,
+  width: 32,
+  height: 32,
+  draw: function() {
+    ctx.fillStyle = this.color;
+    ctx.fillRect(this.x, this.y, this.width, this.height);
+  }
+};
+}
+  
+
+
 
 function draw(){
 ctx.clearRect(0, 0, 400, 400);
@@ -14,27 +49,6 @@ for(var i = 0; i<enemynum; i++)
 }
 
 
-var FPS = 60;
-canvas.addEventListener('mousemove', MouseMove, false);
-setInterval(function() {
-  update();
-  draw();
-}, 1000/FPS);
-
-
-var player = {
-  color: "#00A",
-  x: 220,
-  y: 270,
-  width: 32,
-  height: 32,
-  draw: function() {
-    ctx.fillStyle = this.color;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
-  }
-};
-
-var enemies = [];
 
 function update(){
   // Add only 4 enemies to the screen
@@ -67,7 +81,6 @@ function update(){
       }
     })
   }
- 
 }
 
 

@@ -39,7 +39,7 @@
       color: #CCCCCC;
     }
     canvas {
-      pointer-events:none;
+     
     }
   mark{
     background: rgba(173, 217, 230, 0.6);

@@ -57,156 +57,19 @@
         </nav>
 <body> 
 <div class = "container">
-    <div class = "row">
-      <h1>Higher or Lower</h1>
-      <h2> Game of the Year Edition</h2>
-      <table border = 1 cellspacing="0" cellpadding="0"> 
-        <tr>
-        <td><button id = "LBTN" onclick = "playGame('0')">Choose Lower</button></td>
-        <td><button id = "HBTN" onclick = "playGame('1')">Choose Higher</button></td>
-        <td><p align = center width = 120 height = 60 id = "Score">Score: 0 </p></td>
-        <td><p align = center width = 120 height = 60 id = "Lives">Lives: 3</p></td>
-        <td rowspan = "2" align = center><button  onclick = "reset()" class = "reset" >Reset</button></td>
-        </tr>
-        <tr>        
-        <td align = center width = 80 height = 60><p class = "small" id = "OldCard"></p></td>
-        <td align = center width = 80 height = 60><p id = "Card"></p></td>
-        <td colspan = "2" width = 200 height = 60 align = center ><p id = "Result"></p></td>
-        </tr>
-      </table>
-	    
-	<br>
-<h1>Asher's Komedy Korner</h1>
-	<br>
-<table border="0" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-<td bgcolor="lightgreen">
-<table border="0" cellspacing="0" cellpadding="0" >
-<tbody>
-<tr>
-<td><button id = "Nov1" onclick= "jokes('Nov1A')">What do you call a high pitched piece of boating equipment?</button></td>
-</tr>
-<tr>
-<td><div id = "Nov1A" style="display: none;">A Shrill Anchor</div></td>
-</tr
-<tr>
-<td><button id = "Nov2" onclick= "jokes('Nov2A')">What do you call a country with an epidemic of bacteria?</button></td>
-</tr>
-<tr>
-<td><div id = "Nov2A" style="display: none;">Germ-many</div></td>
-</tr>
-<tr>
-<td><button id = "Nov3" onclick= "jokes('Nov3A')">What do you call the first ever woman made out of clay?</button></td>
-</tr>
-<tr>
-<td><div id = "Nov3A" style="display: none;">Mould-Eves</div></td>
-</tr>
-<tr>
-<td><button id = "Nov4" onclick= "jokes('Nov4A')">"I saw a South American Country."</button></td>
-</tr>
-<tr>
-<td><div id = "Nov4A" style="display: none;">"I don't Bolivia"</div></td>
-</tr>
-</tbody>
-</table>
-</td>
-</tbody>
-</table> 
+    <div class = "row"> 
 <br>
 	<canvas id="canvas" height=400 width=400></canvas>
 	<p id="testout"></p>
 	<br>
   </div>
   </div>
-  <script src="/static/games.js"></script><script src="/static/games.js"></script>
-  <script>
-  var currentCard = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Click a button to guess"];
-  var Card = getCard();
-  var OldCard;
-  var TCard = document.getElementById("Card");
-  var TOldCard = document.getElementById("OldCard");
-  var Result = document.getElementById("Result");
-  var lives;
-  var score;
-  reset(); 
-  function getCard() {
-   return Math.floor(Math.random() * 13);
-  }
-  function playGame(choice){
-    OldCard = Card;
-    Card = getCard();
-    
-    TCard.innerHTML = currentCard[Card];
-    if (Card < OldCard && choice === '0')
-    {
-        Result.innerHTML = "Correct, it was lower";
-        score++;
-    }
-    else if (Card > OldCard && choice === '1')
-    {
-        Result.innerHTML = "Correct, it was higher";    
-        score++;
-    }
-    else if (Card === OldCard)
-    {
-        Result.innerHTML = "Draw";    
-        score++;
-    }
-    else
-    {
-        Result.innerHTML = "Incorrect; one life lost";
-        lives--;
-    }
-    updateText();
-    
-    if (lives === 0 )
-    {
-      TCard.innerHTML = "You lose!"
-      document.getElementById("LBTN").disabled = true;
-      document.getElementById("HBTN").disabled = true;
-    }
-  }
-  function reset() 
-  {
-    lives = 3;
-    score = 0;
-    OldCard = 13;
-    updateText();
-    document.getElementById("LBTN").disabled = false;
-    document.getElementById("HBTN").disabled = false;
-  }
-    
-  function updateText()
-  {
-    document.getElementById("Score").innerHTML = "Score: " + score;
-    document.getElementById("Lives").innerHTML = "Lives: " + lives;
-    TCard.innerHTML = currentCard[Card];
-    TOldCard.innerHTML = currentCard[OldCard];
-  }  
-	  
-function jokes(name)
-{
-var div = document.getElementById(name);
-    if (div.style.display !== 'none') {
-      	 div.style.display = 'none';
-    }
-    else {
-        div.style.display = 'block';
-    }
-}
-    
-function CheckText()
-{                               	
-	var reader = new FileReader();			
-	reader.onload = function (e) {  
-		var output=e.target.result;			
-		document.getElementById('Text1').innerHTML= output;
-       		reader.readAsText('/static/text.txt');
-		reader.readAsText('http://www.swpc.noaa.gov/ftpdir/indices/events/events.txt');
-	} 
-}
-	  
-</script>
+  <script src="/static/games.js"></script>
 </body>
 </html>
+	
+	
+	
+	
+	
+	

@@ -4,10 +4,8 @@ var enemynum;
 var enemycounter;
 
 var FPS;
-var player
+var player;
 var enemies = []; 
-
-
 
 function Initialise()
 {

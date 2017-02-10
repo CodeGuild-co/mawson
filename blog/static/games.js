@@ -9,31 +9,32 @@ var enemies = [];
 
 function Initialise()
 {
-  c=document.getElementById("canvas");
-  ctx=c.getContext("2d");
-  enemynum = 0;
-  enemycounter=100;
-  FPS = 60;
-  canvas.addEventListener('mousemove', MouseMove, false);
-  setInterval(function() {
-  update();
-  draw();
-}, 1000/FPS);  
-  
-  player = {
-  color: "#00A",
-  x: 220,
-  y: 270,
-  width: 32,
-  height: 32,
-  draw: function() {
+  if(c == null)
+  {
+    c=document.getElementById("canvas");
+    ctx=c.getContext("2d");
+    enemynum = 0;
+    enemycounter=100;
+    FPS = 60;
+    canvas.addEventListener('mousemove', MouseMove, false);
+    setInterval(function() {
+    update();
+    draw();
+    }, 1000/FPS);  
+  }
+    player = {
+    color: "#00A",
+    x: 220,
+    y: 270,
+    width: 32,
+    height: 32,
+    draw: function() {
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 };
 }
   
-
 
 
 function draw(){
@@ -69,13 +70,16 @@ function update(){
     y: -20,
     width: 400,
     height: 20,
+    hole: Math.floor(Math.random()*380),
     draw: function() {
       if(this.y>400)
       {
+        this.hole = Math.floor(Math.random()*this.width-20);
         this.y=-this.height;
       }
       ctx.fillStyle = this.color;
-      ctx.fillRect(this.x, this.y, this.width, this.height);
+      ctx.fillRect(this.x, this.y, this.hole, this.height);
+      ctx.fillRect(this.hole+player.width+20, this.y, this.width, this.height);
       }
     });
   }
@@ -85,8 +89,8 @@ function update(){
 function MouseMove(e){
 
 player.x = e.clientX-canvas.offsetLeft-player.height/2;
-document.getElementById("testout").innerHTML=String(player.x)+",";
-player.y = e.clientY-canvas.offsetTop-player.height/2; 
-document.getElementById("testout").innerHTML+=String(player.y);
+//document.getElementById("testout").innerHTML=String(enemies[1].hole)+",";
+player.y = e.clientY-canvas.offsetTop-player.height/2+$(document).scrollTop(); 
+//document.getElementById("testout").innerHTML+=String(enemies[1].hole);
 
 }

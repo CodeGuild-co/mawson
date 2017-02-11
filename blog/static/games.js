@@ -42,8 +42,44 @@ ctx.clearRect(0, 0, 400, 400);
 player.draw();
 for(var i = 0; i<enemynum; i++)
   {
-    enemies[i].y++;
+    enemies[i].y+=2;
     enemies[i].draw();
+    collisions(i);  // Check collisions with current enemy.
+  }
+}
+
+
+function collisions(i){
+   
+  var e = enemies[i];
+  var p = player
+  
+  // Top Left
+  
+  if(p.x<e.hole && (p.y<(e.y+e.height)&&p.y>e.y))
+  {
+     document.getElementById("testout").innerHTML=String("TL Collide");
+  }
+  
+  // Top Right
+  
+  if((p.x+p.width)>(e.hole+p.width+e.extragap) && ((p.y)<(e.y+e.height)&&p.y>e.y))
+  {
+     document.getElementById("testout").innerHTML=String("TR Collide");
+  }  
+  
+  // Bottom Left
+  
+  if(p.x<e.hole && ((p.y+p.height)<(e.y+e.height)&&(p.y+p.height)>e.y))
+  {
+     document.getElementById("testout").innerHTML=String("BL Collide");
+  }
+  
+  // Bottom Right
+  
+  if((p.x+p.width)>(e.hole+p.width+e.extragap) && ((p.y+p.height)<(e.y+e.height)&&(p.y+p.height)>e.y))
+  {
+     document.getElementById("testout").innerHTML=String("BR Collide");
   }
 }
 
@@ -54,7 +90,7 @@ function update(){
   if(enemynum<4)
   {
     enemycounter++;
-    if(enemycounter > 100)
+    if(enemycounter > 50)
     // Spacing of enemies
     {
       enemycounter = 0;
@@ -70,6 +106,7 @@ function update(){
     y: -20,
     width: 400,
     height: 20,
+    extragap: 20,
     hole: Math.floor(Math.random()*380),
     draw: function() {
       if(this.y>400)
@@ -79,7 +116,7 @@ function update(){
       }
       ctx.fillStyle = this.color;
       ctx.fillRect(this.x, this.y, this.hole, this.height);
-      ctx.fillRect(this.hole+player.width+20, this.y, this.width, this.height);
+      ctx.fillRect(this.hole+player.width+this.extragap, this.y, this.width, this.height);
       }
     });
   }
@@ -89,8 +126,8 @@ function update(){
 function MouseMove(e){
 
 player.x = e.clientX-canvas.offsetLeft-player.height/2;
-//document.getElementById("testout").innerHTML=String(enemies[1].hole)+",";
+document.getElementById("testout").innerHTML=String("");
 player.y = e.clientY-canvas.offsetTop-player.height/2+$(document).scrollTop(); 
-//document.getElementById("testout").innerHTML+=String(enemies[1].hole);
+
 
 }

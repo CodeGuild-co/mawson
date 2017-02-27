@@ -142,4 +142,5 @@ player.y = e.clientY-canvas.offsetTop-player.height/2+$(document).scrollTop();
 function Finalise(){
   
   alert("You lost, but scored " + score);
+  Initialise();
 }

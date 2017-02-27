@@ -2,6 +2,7 @@ var c;
 var ctx;
 var enemynum;
 var enemycounter;
+var score;
 
 var FPS;
 var player;
@@ -9,6 +10,7 @@ var enemies = [];
 
 function Initialise()
 {
+  score = 0;
   if(c == null)
   {
     c=document.getElementById("canvas");
@@ -59,6 +61,7 @@ function collisions(i){
   if(p.x<e.hole && (p.y<(e.y+e.height)&&p.y>e.y))
   {
      document.getElementById("testout").innerHTML=String("TL Collide");
+     Finalise();
   }
   
   // Top Right
@@ -66,6 +69,7 @@ function collisions(i){
   if((p.x+p.width)>(e.hole+p.width+e.extragap) && ((p.y)<(e.y+e.height)&&p.y>e.y))
   {
      document.getElementById("testout").innerHTML=String("TR Collide");
+     Finalise();
   }  
   
   // Bottom Left
@@ -73,6 +77,7 @@ function collisions(i){
   if(p.x<e.hole && ((p.y+p.height)<(e.y+e.height)&&(p.y+p.height)>e.y))
   {
      document.getElementById("testout").innerHTML=String("BL Collide");
+     Finalise();
   }
   
   // Bottom Right
@@ -80,12 +85,15 @@ function collisions(i){
   if((p.x+p.width)>(e.hole+p.width+e.extragap) && ((p.y+p.height)<(e.y+e.height)&&(p.y+p.height)>e.y))
   {
      document.getElementById("testout").innerHTML=String("BR Collide");
+     Finalise();
   }
 }
 
 
 
 function update(){
+  
+  score++;
   // Add only 4 enemies to the screen
   if(enemynum<4)
   {
@@ -126,8 +134,12 @@ function update(){
 function MouseMove(e){
 
 player.x = e.clientX-canvas.offsetLeft-player.height/2;
-document.getElementById("testout").innerHTML=String("");
+document.getElementById("testout").innerHTML=String(score);
 player.y = e.clientY-canvas.offsetTop-player.height/2+$(document).scrollTop(); 
 
+}
 
+function Finalise(){
+  
+  alert("You lost, but scored " + score);
 }

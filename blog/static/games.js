@@ -10,7 +10,12 @@ var enemies = [];
 
 function Initialise()
 {
+  // Reset variables.
   score = 0;
+  enemies = [];
+  enemynum =0;
+  enemycounter=0;
+  
   if(c == null)
   {
     c=document.getElementById("canvas");

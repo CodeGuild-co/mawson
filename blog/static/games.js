@@ -60,7 +60,7 @@ function collisions(i){
   
   if(p.x<e.hole && (p.y<(e.y+e.height)&&p.y>e.y))
   {
-     document.getElementById("testout").innerHTML=String("TL Collide");
+     //document.getElementById("testout").innerHTML=String("TL Collide");
      Finalise();
   }
   
@@ -68,7 +68,7 @@ function collisions(i){
   
   if((p.x+p.width)>(e.hole+p.width+e.extragap) && ((p.y)<(e.y+e.height)&&p.y>e.y))
   {
-     document.getElementById("testout").innerHTML=String("TR Collide");
+     //document.getElementById("testout").innerHTML=String("TR Collide");
      Finalise();
   }  
   
@@ -76,7 +76,7 @@ function collisions(i){
   
   if(p.x<e.hole && ((p.y+p.height)<(e.y+e.height)&&(p.y+p.height)>e.y))
   {
-     document.getElementById("testout").innerHTML=String("BL Collide");
+     //document.getElementById("testout").innerHTML=String("BL Collide");
      Finalise();
   }
   
@@ -84,7 +84,7 @@ function collisions(i){
   
   if((p.x+p.width)>(e.hole+p.width+e.extragap) && ((p.y+p.height)<(e.y+e.height)&&(p.y+p.height)>e.y))
   {
-     document.getElementById("testout").innerHTML=String("BR Collide");
+     //document.getElementById("testout").innerHTML=String("BR Collide");
      Finalise();
   }
 }

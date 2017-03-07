@@ -124,7 +124,7 @@ function update(){
     draw: function() {
       if(this.y>400)
       {
-        this.hole = Math.floor(Math.random()*this.width-20);
+        this.hole = Math.floor(Math.random()*this.width-50);
         this.y=-this.height;
       }
       ctx.fillStyle = this.color;

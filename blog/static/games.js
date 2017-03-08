@@ -120,11 +120,11 @@ function update(){
     width: 400,
     height: 20,
     extragap: 20,
-    hole: Math.floor(Math.random()*380),
+    hole: Math.floor(Math.random()*340+20),
     draw: function() {
       if(this.y>400)
       {
-        this.hole = Math.floor(Math.random()*this.width-50);
+        this.hole = Math.floor(Math.random()*this.width-60+20);
         this.y=-this.height;
       }
       ctx.fillStyle = this.color;

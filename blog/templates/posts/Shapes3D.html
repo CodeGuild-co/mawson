@@ -1,6 +1,6 @@
 <html>
 
-<canvas id="canvas" height=400 width=400 onclick = "Initialise()"></canvas>
+<canvas id="canvas" height=400 width=400></canvas>
 <p id="testout"></p>
 
 <script type="text/javascript">
@@ -89,24 +89,7 @@ function Point (x, y)
 	this.Y = y;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*Node Class*/
 
 function Node (x,y,z)
 {
@@ -131,7 +114,7 @@ function Node (x,y,z)
 }
 
 
-
+/*Face Class*/
 
 function Face (nodes, colour)
 {
@@ -175,7 +158,6 @@ function Face (nodes, colour)
 			_ymean += nodes[i].RotateNode(angle, p).Y;
 			_zmean += nodes[i].z;
 		}
-		document.getElementById("testout").innerHTML += nodes[0].RotateNode(angle, p).X;
 		return [Math.round(_xmean/l), Math.round(_ymean/l), Math.round(_zmean/l)];
 	}
 	this.getDistFromViewer = function(angle)
@@ -188,7 +170,8 @@ function Face (nodes, colour)
 	}
 }
 
-
+/*Face Class*/
+	
 function Object (faces)
 {
 	this.faces = faces;
@@ -215,6 +198,5 @@ function Object (faces)
 
 
 </script>
-
-<p>testing</p>
+<button onclick = "Initialise()">Click to Start</button>
 </html>

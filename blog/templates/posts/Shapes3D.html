@@ -1,0 +1,220 @@
+<html>
+
+<canvas id="canvas" height=400 width=400 onclick = "Initialise()"></canvas>
+<p id="testout"></p>
+
+<script type="text/javascript">
+
+var c;
+var ctx;
+var FPS;
+var count = 0;
+var angle = 0;
+var Vertices;
+
+function Initialise()
+{
+	c = document.getElementById("canvas");
+	ctx = c.getContext("2d");	
+	
+	FPS = 60;
+	
+	cls();
+	
+	setInterval(function() {
+    update();
+    draw(angle);
+    }, 1000/FPS);
+	
+	/*var p = new Point(12,12);
+	
+	var Vertices = [new Point(12,12),new Point(12,56)];*/
+	
+}
+
+function RotateP(angle, center, radius)
+{
+	var g = new Point(0,0);
+	g.X = Math.round(radius*Math.cos(angle) + center.X);			//get the position of the x coordiante using the radius(100) and the cosine of the angle plus the centre coordinate
+	g.Y = Math.round((radius*Math.sin(angle) + center.Y)/2);	
+	
+	return g;
+}
+
+
+function update()
+{
+	count++;
+	angle+=0.01;
+	document.getElementById("testout").innerHTML = "Frames " + count;
+}
+
+function draw(angle)
+{
+	cls();
+	var d = new Array();
+	var gratio = (1+Math.sqrt(5))/2;
+	var scale = 50;
+	var offset = new Point(150,150);
+	
+	d.push(new Face([new Node(scale,-scale,scale), new Node(Math.round(scale*gratio), Math.round(-scale/gratio), 0), new Node(scale,-scale,-scale), new Node(0,Math.round(-scale*gratio),Math.round(-scale/gratio)), new Node(0,Math.round(-scale*gratio),Math.round(scale/gratio))], "yellow"));
+	d.push(new Face([new Node(-scale,-scale,scale), new Node(-Math.round(scale*gratio), Math.round(-scale/gratio), 0), new Node(-scale,-scale,-scale), new Node(0,Math.round(-scale*gratio),Math.round(-scale/gratio)), new Node(0,Math.round(-scale*gratio),Math.round(scale/gratio))], "blue"));
+	d.push(new Face([new Node(scale,scale,scale), new Node(Math.round(scale*gratio), Math.round(scale/gratio), 0), new Node(scale,scale,-scale), new Node(0,Math.round(scale*gratio),Math.round(-scale/gratio)), new Node(0,Math.round(scale*gratio),Math.round(scale/gratio))], "green"));
+	d.push(new Face([new Node(-scale,scale,scale), new Node(-Math.round(scale*gratio), Math.round(scale/gratio), 0), new Node(-scale,scale,-scale), new Node(0,Math.round(scale*gratio),Math.round(-scale/gratio)), new Node(0,Math.round(scale*gratio),Math.round(scale/gratio))], "red"));
+
+	d.push(new Face([new Node(Math.round(scale/gratio), 0, Math.round(scale*gratio)), new Node(scale,-scale,scale), new Node(0, Math.round(-scale*gratio), Math.round(scale/gratio)), new Node(-scale, -scale, scale), new Node(Math.round(-scale/gratio), 0, Math.round(scale*gratio))], "red"));
+	d.push(new Face([new Node(Math.round(scale/gratio), 0, Math.round(scale*gratio)), new Node(scale,scale,scale), new Node(0, Math.round(scale*gratio), Math.round(scale/gratio)), new Node(-scale, scale, scale), new Node(Math.round(-scale/gratio), 0, Math.round(scale*gratio))], "yellow"));
+	d.push(new Face([new Node(Math.round(scale/gratio), 0, -Math.round(scale*gratio)), new Node(scale,-scale,-scale), new Node(0, Math.round(-scale*gratio), -Math.round(scale/gratio)), new Node(-scale, -scale, -scale), new Node(Math.round(-scale/gratio), 0, -Math.round(scale*gratio))], "green"));
+	d.push(new Face([new Node(Math.round(scale/gratio), 0, -Math.round(scale*gratio)), new Node(scale,scale,-scale), new Node(0, Math.round(scale*gratio), -Math.round(scale/gratio)), new Node(-scale, scale, -scale), new Node(Math.round(-scale/gratio), 0, -Math.round(scale*gratio))], "blue"));
+	
+	d.push(new Face([new Node(Math.round(-scale/gratio), 0, Math.round(scale*gratio)), new Node(-scale, -scale, scale), new Node(-Math.round(scale*gratio), -Math.round(scale/gratio), 0), new Node(-Math.round(scale*gratio), Math.round(scale/gratio), 0), new Node(-scale,scale,scale)], "green"));
+	d.push(new Face([new Node(Math.round(-scale/gratio), 0, -Math.round(scale*gratio)), new Node(-scale, -scale, -scale), new Node(-Math.round(scale*gratio), -Math.round(scale/gratio), 0), new Node(-Math.round(scale*gratio), Math.round(scale/gratio), 0), new Node(-scale,scale,-scale)], "yellow"));
+	d.push(new Face([new Node(Math.round(scale/gratio), 0, Math.round(scale*gratio)), new Node(scale, -scale, scale), new Node(Math.round(scale*gratio), -Math.round(scale/gratio), 0), new Node(Math.round(scale*gratio), Math.round(scale/gratio), 0), new Node(scale,scale,scale)], "blue"));
+	d.push(new Face([new Node(Math.round(scale/gratio), 0, -Math.round(scale*gratio)), new Node(scale, -scale, -scale), new Node(Math.round(scale*gratio), -Math.round(scale/gratio), 0), new Node(Math.round(scale*gratio), Math.round(scale/gratio), 0), new Node(scale,scale,-scale)], "red"));
+	
+	var dodecahedron = new Object(d);
+	dodecahedron.Draw(angle, offset);
+}
+
+
+function cls()
+{
+	ctx.fillStyle = "black";
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function Point (x, y)
+{
+	this.X = x;
+	this.Y = y;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function Node (x,y,z)
+{
+	this.x=x;
+	this.y=y;
+	this.z=z;
+	this.getR=function()
+	{
+		return Math.sqrt(x*x+y*y);
+	}
+	this.getTheta=function()
+	{
+		return Math.atan2(y,x);
+	}
+	this.RotateNode = function(angle, offset)
+	{
+		var _temp = new Point(0,0);
+		_temp.X = Math.round(this.getR()*Math.cos(this.getTheta()+angle))+offset.X;
+		_temp.Y = Math.round(this.getR()*Math.sin(this.getTheta()+angle)*2/3)+offset.Y-z;
+		return _temp;
+	}
+}
+
+
+
+
+function Face (nodes, colour)
+{
+	this.colour = colour;
+	this.nodes = nodes;
+	this.Draw = function(angle, offset)
+	{
+		var Vertices = new Array();
+		ctx.fillStyle = colour;
+		ctx.beginPath();
+		ctx.moveTo(nodes[0].RotateNode(angle,offset).X,nodes[0].RotateNode(angle,offset).Y);
+		for(i= 0; i<=nodes.length-2; ++i)
+		{
+			var temp = nodes[i+1].RotateNode(angle,offset);
+			ctx.lineTo(temp.X, temp.Y); 
+		}
+		
+		ctx.closePath();
+		ctx.fill();
+	}
+	this.RotateFace = function(angle, offset)
+	{
+		var _temp = new Array();
+		for(var i = 0; i<=nodes.length-1; ++i)
+		{
+			_temp[i] = nodes[i].RotateNode(angle, offset);
+		}
+		return _temp;
+	}
+	this.getCentre = function(angle)
+	{
+		var _xmean = 0;
+		var _ymean = 0;
+		var _zmean = 0;
+		var l = this.nodes.length;
+		var p = new Point(0,0);
+		
+		for(var i =0; i<=l-1; ++i)
+		{
+			_xmean += nodes[i].RotateNode(angle, p).X;
+			_ymean += nodes[i].RotateNode(angle, p).Y;
+			_zmean += nodes[i].z;
+		}
+		document.getElementById("testout").innerHTML += nodes[0].RotateNode(angle, p).X;
+		return [Math.round(_xmean/l), Math.round(_ymean/l), Math.round(_zmean/l)];
+	}
+	this.getDistFromViewer = function(angle)
+	{
+		var _x = parseInt(this.getCentre(angle)[0]) - 0;
+		var _y = parseInt(this.getCentre(angle)[1]) - 500;
+		var _z = parseInt(this.getCentre(angle)[2]) - 750;
+		
+		return Math.sqrt(_x*_x + _y*_y + _z*_z);
+	}
+}
+
+
+function Object (faces)
+{
+	this.faces = faces;
+	this.Draw = function Draw(angle, offset)
+	{
+		faces.sort(function (a, b) 
+		{
+			return - b.getDistFromViewer(angle) + a.getDistFromViewer(angle);
+		});
+		for(var i = 0; i<=faces.length-1; ++i)
+		{
+			faces[i].Draw(angle,offset);
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+</script>
+
+<p>testing</p>
+</html>
